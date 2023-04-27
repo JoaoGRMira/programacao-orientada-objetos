@@ -1,5 +1,3 @@
-import Cliente from "../modelo/cliente";
-import Produto from "../modelo/produto";
 import Servico from "../modelo/servico";
 import Listagem from "./listagem";
 

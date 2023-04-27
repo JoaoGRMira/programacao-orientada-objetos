@@ -1,7 +1,4 @@
 import Entrada from "../io/entrada"
-import Cliente from "../modelo/cliente"
-import CPF from "../modelo/cpf"
-import Produto from "../modelo/produto"
 import Servico from "../modelo/servico"
 import Cadastro from "./cadastro"
 
