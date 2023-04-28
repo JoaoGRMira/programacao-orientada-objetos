@@ -4,10 +4,12 @@ import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroPet from "../negocio/cadastroPet";
 import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServico";
+import EditorCliente from "../negocio/editorCliente";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemPets from "../negocio/listagemPets";
 import ListagemProdutos from "../negocio/listagemProdutos";
 import ListagemServicos from "../negocio/listagemServicos";
+import Selecionador from "../negocio/selecionador";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -23,6 +25,8 @@ while (execucao) {
     console.log(`6 - Listar todos os serviços`);
     console.log(`7 - Cadastrar Pet`);
     console.log(`8 - Listar todos os pets`);
+    console.log(`9 - Excluir um cliente`);
+    console.log(`10 - Editar um cliente`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -60,6 +64,22 @@ while (execucao) {
         case 8:
             let listagemPet = new ListagemPets(empresa.getPets)
             listagemPet.listar()
+            break;
+        case 9:
+            let cpf = entrada.receberTexto('Digite um CPF para exclusão: ')
+            let selecionadorCliente = new Selecionador(empresa.getClientes)
+            let cliente = selecionadorCliente.selecionar(cpf)
+            
+            let indice = empresa.getClientes.indexOf(cliente)
+            delete empresa.getClientes[indice]
+            break;
+        case 10:
+            let cpfEditar = entrada.receberTexto('Digite um CPF para edição: ')
+            let selecionadorClienteEditar = new Selecionador(empresa.getClientes)
+            let clienteEditar = selecionadorClienteEditar.selecionar(cpfEditar)
+
+            let editor = new EditorCliente()
+            editor.editar(clienteEditar)
             break;
         case 0:
             execucao = false
