@@ -27,6 +27,11 @@ while (execucao) {
     console.log(`8 - Listar todos os pets`);
     console.log(`9 - Excluir um cliente`);
     console.log(`10 - Editar um cliente`);
+    console.log(`11 - Listar consumo de todos os clientes`);
+    console.log(`12 - Listar os 10 clientes que mais consumiram em quantidade`);
+    console.log(`13 - Listar os produtos e serviços mais consumidos`);
+    console.log(`14 - Listar de produtos ou serviços mais consumidos por raça e tipo de pet`);
+    console.log(`15 - Listar os 5 clientes que mais consumiram em valor`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -80,6 +85,16 @@ while (execucao) {
 
             let editor = new EditorCliente()
             editor.editar(clienteEditar)
+            break;
+        case 11:
+            break;
+        case 12:
+            break;
+        case 13:
+            break;
+        case 14:
+            break;
+        case 15:
             break;
         case 0:
             execucao = false
