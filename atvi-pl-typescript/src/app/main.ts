@@ -63,7 +63,7 @@ while (execucao) {
             listagemServico.listar()
             break;
         case 7:
-            let cadastroPet = new CadastroPet(empresa.getPets)
+            let cadastroPet = new CadastroPet(empresa.getPets, empresa.getClientes)
             cadastroPet.cadastrar()
             break;
         case 8:

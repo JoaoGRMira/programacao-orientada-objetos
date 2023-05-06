@@ -6,39 +6,34 @@ import Cadastro from "./cadastro"
 import Selecionador from "./selecionador"
 
 export default class CadastroPet extends Cadastro {
-    private empresa: Empresa
+    private clientes: Array<Cliente>
     private pets: Array<Pet>
     private entrada: Entrada
-    constructor(pets: Array<Pet>) {
+    constructor(pets: Array<Pet>, clientes: Array<Cliente>) {
         super()
+        this.clientes = clientes
         this.pets = pets
         this.entrada = new Entrada()
-        this.empresa = new Empresa()
-    }
-    
-    private selecionarCliente(): Cliente {
-        let cpf = this.entrada.receberTexto('Digite o CPF do cliente: ')
-        let selecionadorCliente = new Selecionador(this.empresa.getClientes)
-        let cliente = selecionadorCliente.selecionar(cpf)
-        return cliente;
     }
 
     public cadastrar(): void {
         console.log(`\nInício do cadastro do pet`);
+        let numeroCpf = this.entrada.receberTexto(`Por favor informe o CPF do cliente: `)
+        let selecionador = new Selecionador(this.clientes)
+        let cliente = selecionador.selecionar(numeroCpf)
+
         let nome = this.entrada.receberTexto(`Por favor informe o nome do pet: `)
         let tipo = this.entrada.receberTexto(`Por favor informe o tipo do pet: `)
         let raca = this.entrada.receberTexto(`Por favor informe a raça do pet: `);
         let genero = this.entrada.receberTexto(`Por favor informe o gênero do pet: `);
+        let tutor = cliente.nome
+        let pet = new Pet(nome, tipo, raca, genero, tutor);
+        this.pets.push(pet)
         
-        let cliente = this.selecionarCliente();
-
-        if (cliente) {
-            let pet = new Pet(nome, tipo, raca, genero);
-            cliente.adicionarPet(pet);
-            console.log(`\nPet cadastrado e associado ao cliente ${cliente.nome}.\n`);
-        } else {
-            console.log(`\nCliente não encontrado. O pet não foi cadastrado.\n`);
-        }
+        
+        // associa o pet ao cliente
+        cliente.adicionarPet(pet)
+        console.log(`\nPet cadastrado pelo cliente ${cliente.nome}\n`);
     }
 }
 

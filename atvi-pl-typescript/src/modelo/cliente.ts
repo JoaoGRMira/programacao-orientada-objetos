@@ -50,4 +50,5 @@ export default class Cliente {
     public adicionarPet(pet: Pet): void {
         this.pets.push(pet);
       }
+      
 }
