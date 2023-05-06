@@ -1,4 +1,4 @@
-import Produto from "../modelo/produto";
+import Produto from "../../modelo/produto";
 import Listagem from "./listagem";
 
 export default class ListagemProdutos extends Listagem {

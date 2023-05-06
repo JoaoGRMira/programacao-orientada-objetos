@@ -1,4 +1,4 @@
-import Pet from "../modelo/pet";
+import Pet from "../../modelo/pet";
 import Listagem from "./listagem";
 
 export default class ListagemPets extends Listagem {

@@ -1,5 +1,5 @@
-import Cliente from "../modelo/cliente";
-import CPF from "../modelo/cpf";
+import Cliente from "../../modelo/cliente/cliente";
+import CPF from "../../modelo/cliente/cpf";
 
 export default class Selecionador {
     private clientes: Array<Cliente>

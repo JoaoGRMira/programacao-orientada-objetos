@@ -1,5 +1,5 @@
-import Entrada from "../io/entrada"
-import Servico from "../modelo/servico"
+import Entrada from "../../io/entrada"
+import Servico from "../../modelo/servico"
 import Cadastro from "./cadastro"
 
 export default class CadastroServico extends Cadastro {
@@ -13,7 +13,7 @@ export default class CadastroServico extends Cadastro {
     public cadastrar(): void {
         console.log(`\nInício do cadastro do Serviço`);
         let nomeServico = this.entrada.receberTexto('Por favor, informe o nome do serviço: ');
-        let servico = new Servico();
+        let servico = new Servico(nomeServico);
         servico.nome = nomeServico;
 
         this.servicos.push(servico)

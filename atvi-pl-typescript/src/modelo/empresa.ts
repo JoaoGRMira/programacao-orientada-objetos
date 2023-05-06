@@ -1,4 +1,4 @@
-import Cliente from "./cliente"
+import Cliente from "./cliente/cliente"
 import Pet from "./pet"
 import Produto from "./produto"
 import Servico from "./servico"

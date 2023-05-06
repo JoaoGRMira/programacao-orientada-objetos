@@ -1,16 +1,20 @@
 import Entrada from "../io/entrada";
 import Empresa from "../modelo/empresa";
-import CadastroCliente from "../negocio/cadastroCliente";
-import CadastroPet from "../negocio/cadastroPet";
-import CadastroProduto from "../negocio/cadastroProduto";
-import CadastroServico from "../negocio/cadastroServico";
+import CadastroCliente from "../negocio/cadastros/cadastroCliente";
+import CadastroPet from "../negocio/cadastros/cadastroPet";
+import CadastroProduto from "../negocio/cadastros/cadastroProduto";
+import CadastroServico from "../negocio/cadastros/cadastroServico";
 import ConsumirProduto from "../negocio/consumirProduto";
-import EditorCliente from "../negocio/editorCliente";
-import ListagemClientes from "../negocio/listagemClientes";
-import ListagemPets from "../negocio/listagemPets";
-import ListagemProdutos from "../negocio/listagemProdutos";
-import ListagemServicos from "../negocio/listagemServicos";
-import Selecionador from "../negocio/selecionador";
+import EditorCliente from "../negocio/edicoes/editorCliente";
+import ListagemClientes from "../negocio/listagens/listagemClientes";
+import ListagemPets from "../negocio/listagens/listagemPets";
+import ListagemProdutos from "../negocio/listagens/listagemProdutos";
+import ListagemServicos from "../negocio/listagens/listagemServicos";
+import Selecionador from "../negocio/selecionadores/selecionador";
+import Selecionadorpet from "../negocio/selecionadores/selecionadorPet";
+import SelecionadorProduto from "../negocio/selecionadores/selecionadorProduto";
+import selecionadorProduto from "../negocio/selecionadores/selecionadorProduto";
+import SelecionadorServico from "../negocio/selecionadores/selecionadorServico";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
@@ -35,6 +39,12 @@ while (execucao) {
     console.log(`15 - Listar os produtos e serviços mais consumidos`);
     console.log(`16 - Listar de produtos ou serviços mais consumidos por raça e tipo de pet`);
     console.log(`17 - Listar os 5 clientes que mais consumiram em valor`);
+    console.log(`18 - Excluir um produto`);
+    console.log(`19 - Editar um produto`);
+    console.log(`20 - Excluir um serviço`);
+    console.log(`21 - Editar um serviço`);
+    console.log(`22 - Excluir um pet`);
+    console.log(`23 - Editar um pet`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -101,6 +111,40 @@ while (execucao) {
         case 14:
             break;
         case 15:
+            break;
+        case 16:
+            break;
+        case 17:
+            break;
+        case 18:
+            let nomeProduto = entrada.receberTexto('Digite um produto para exclusão: ')
+            let selecionadorProduto = new SelecionadorProduto(empresa.getProdutos)
+            let produto = selecionadorProduto.selecionarProduto(nomeProduto)
+            
+            let indiceProduto = empresa.getProdutos.indexOf(produto)
+            delete empresa.getProdutos[indiceProduto]
+            break;
+        case 19:
+            break;
+        case 20:
+            let nomeServico = entrada.receberTexto('Digite um serviço para exclusão: ')
+            let selecionadorServico = new SelecionadorServico(empresa.getServicos)
+            let servico = selecionadorServico.selecionarServico(nomeServico)
+            
+            let indiceServico = empresa.getServicos.indexOf(servico)
+            delete empresa.getServicos[indiceServico]
+            break;
+        case 21:
+            break;
+        case 22:
+            let nomePet = entrada.receberTexto('Digite um pet para exclusão: ')
+            let selecionadorPet = new Selecionadorpet(empresa.getPets)
+            let pet = selecionadorPet.selecionarPet(nomePet)
+            
+            let indicePet = empresa.getPets.indexOf(pet)
+            delete empresa.getPets[indicePet]
+            break;
+        case 23:
             break;
         case 0:
             execucao = false

@@ -1,4 +1,4 @@
-import Cliente from "../modelo/cliente";
+import Cliente from "../../modelo/cliente/cliente";
 import Listagem from "./listagem";
 
 export default class ListagemClientes extends Listagem {
@@ -13,8 +13,14 @@ export default class ListagemClientes extends Listagem {
             console.log(`Nome: ` + cliente.nome);
             console.log(`Nome social: ` + cliente.nomeSocial);
             console.log(`CPF: ` + cliente.getCpf.getValor);
-            console.log(`Pets: ` + cliente.getPets);
-            console.log(`Proutos: ` + cliente.getProdutosConsumidos);
+            console.log(`Pets: `);
+            cliente.getPets.forEach(pet => {
+                console.log(`- ${pet.getNome}`)
+            })
+            console.log(`Produtos: `);
+            cliente.getProdutosConsumidos.forEach(produto => {
+                console.log(`- ${produto.getNome}`);
+            });
             console.log(`--------------------------------------`);
         });
         console.log(`\n`);

@@ -1,9 +1,8 @@
-import Entrada from "../io/entrada"
-import Cliente from "../modelo/cliente"
-import Empresa from "../modelo/empresa"
-import Pet from "../modelo/pet"
+import Entrada from "../../io/entrada"
+import Cliente from "../../modelo/cliente/cliente"
+import Pet from "../../modelo/pet"
 import Cadastro from "./cadastro"
-import Selecionador from "./selecionador"
+import Selecionador from "../selecionadores/selecionador"
 
 export default class CadastroPet extends Cadastro {
     private clientes: Array<Cliente>
@@ -18,7 +17,7 @@ export default class CadastroPet extends Cadastro {
 
     public cadastrar(): void {
         console.log(`\nInício do cadastro do pet`);
-        let numeroCpf = this.entrada.receberTexto(`Por favor informe o CPF do cliente: `)
+        let numeroCpf = this.entrada.receberTexto(`Por favor informe o CPF do tutor: `)
         let selecionador = new Selecionador(this.clientes)
         let cliente = selecionador.selecionar(numeroCpf)
 

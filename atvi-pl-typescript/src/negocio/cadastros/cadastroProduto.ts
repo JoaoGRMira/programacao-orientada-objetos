@@ -1,5 +1,5 @@
-import Entrada from "../io/entrada"
-import Produto from "../modelo/produto"
+import Entrada from "../../io/entrada"
+import Produto from "../../modelo/produto"
 import Cadastro from "./cadastro"
 
 export default class CadastroProduto extends Cadastro {
@@ -13,7 +13,7 @@ export default class CadastroProduto extends Cadastro {
     public cadastrar(): void {
         console.log(`\nInício do cadastro do Produto`);
         let nomeProduto = this.entrada.receberTexto('Por favor, informe o nome do produto: ');
-        let produto = new Produto('');
+        let produto = new Produto(nomeProduto);
         produto.nome = nomeProduto;
 
         this.produtos.push(produto)
