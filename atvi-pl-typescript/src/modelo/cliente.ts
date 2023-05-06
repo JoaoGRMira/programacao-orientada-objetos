@@ -49,6 +49,9 @@ export default class Cliente {
     }
     public adicionarPet(pet: Pet): void {
         this.pets.push(pet);
-      }
+    }
+    public adicionarProduto(produtoConsumido: Produto): void {
+        this.produtosConsumidos.push(produtoConsumido);
+    }
       
 }

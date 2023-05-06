@@ -4,6 +4,7 @@ import CadastroCliente from "../negocio/cadastroCliente";
 import CadastroPet from "../negocio/cadastroPet";
 import CadastroProduto from "../negocio/cadastroProduto";
 import CadastroServico from "../negocio/cadastroServico";
+import ConsumirProduto from "../negocio/consumirProduto";
 import EditorCliente from "../negocio/editorCliente";
 import ListagemClientes from "../negocio/listagemClientes";
 import ListagemPets from "../negocio/listagemPets";
@@ -89,6 +90,8 @@ while (execucao) {
             editor.editar(clienteEditar)
             break;
         case 11:
+            let consumirProduto = new ConsumirProduto(empresa.getProdutos, empresa.getClientes)
+            consumirProduto.cadastrar()
             
             break;
         case 12:
