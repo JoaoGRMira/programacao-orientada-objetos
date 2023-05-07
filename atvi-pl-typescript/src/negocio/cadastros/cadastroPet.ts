@@ -31,7 +31,7 @@ export default class CadastroPet extends Cadastro {
         
         
         // associa o pet ao cliente
-        cliente.adicionarPet(pet)
+        cliente.adicionaPet(pet)
         console.log(`\nPet cadastrado pelo cliente ${cliente.nome}\n`);
     }
 }

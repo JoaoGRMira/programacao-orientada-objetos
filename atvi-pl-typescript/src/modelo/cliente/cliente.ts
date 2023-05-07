@@ -47,11 +47,14 @@ export default class Cliente {
     public get getPets(): Array<Pet>{
         return this.pets
     }
-    public adicionarPet(pet: Pet): void {
+    public adicionaPet(pet: Pet): void {
         this.pets.push(pet);
     }
     public adicionarProduto(produtoConsumido: Produto): void {
         this.produtosConsumidos.push(produtoConsumido);
+    }
+    public adicionarServico(servicoConsumido: Servico): void {
+        this.servicosConsumidos.push(servicoConsumido);
     }
       
 }
