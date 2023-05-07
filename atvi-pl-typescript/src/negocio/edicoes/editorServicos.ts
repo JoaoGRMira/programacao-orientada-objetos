@@ -1,7 +1,7 @@
 import Entrada from "../../io/entrada"
 import Servico from "../../modelo/servico"
 
-export default class Editorservico {
+export default class EditorServico {
     private entrada: Entrada
     constructor() {
         this.entrada = new Entrada()

@@ -6,14 +6,16 @@ import CadastroProduto from "../negocio/cadastros/cadastroProduto";
 import CadastroServico from "../negocio/cadastros/cadastroServico";
 import ConsumirProduto from "../negocio/consumirProduto";
 import EditorCliente from "../negocio/edicoes/editorCliente";
+import EditorPet from "../negocio/edicoes/editorPet";
+import EditorProduto from "../negocio/edicoes/editorProduto";
+import EditorServico from "../negocio/edicoes/editorServicos";
 import ListagemClientes from "../negocio/listagens/listagemClientes";
 import ListagemPets from "../negocio/listagens/listagemPets";
 import ListagemProdutos from "../negocio/listagens/listagemProdutos";
 import ListagemServicos from "../negocio/listagens/listagemServicos";
 import Selecionador from "../negocio/selecionadores/selecionador";
-import Selecionadorpet from "../negocio/selecionadores/selecionadorPet";
+import SelecionadorPet from "../negocio/selecionadores/selecionadorPet";
 import SelecionadorProduto from "../negocio/selecionadores/selecionadorProduto";
-import selecionadorProduto from "../negocio/selecionadores/selecionadorProduto";
 import SelecionadorServico from "../negocio/selecionadores/selecionadorServico";
 
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
@@ -125,6 +127,12 @@ while (execucao) {
             delete empresa.getProdutos[indiceProduto]
             break;
         case 19:
+            let nomeProdutoEditar = entrada.receberTexto('Digite um produto para edição: ')
+            let selecionadorProdutoEditar = new SelecionadorProduto(empresa.getProdutos)
+            let produtoEditar = selecionadorProdutoEditar.selecionarProduto(nomeProdutoEditar)
+
+            let editorProduto = new EditorProduto()
+            editorProduto.editar(produtoEditar)
             break;
         case 20:
             let nomeServico = entrada.receberTexto('Digite um serviço para exclusão: ')
@@ -135,16 +143,28 @@ while (execucao) {
             delete empresa.getServicos[indiceServico]
             break;
         case 21:
+            let nomeServicoEditar = entrada.receberTexto('Digite um serviço para edição: ')
+            let selecionadorServicoEditar = new SelecionadorServico(empresa.getServicos)
+            let servicoEditar = selecionadorServicoEditar.selecionarServico(nomeServicoEditar)
+
+            let editorServico = new EditorServico()
+            editorServico.editar(servicoEditar)
             break;
         case 22:
             let nomePet = entrada.receberTexto('Digite um pet para exclusão: ')
-            let selecionadorPet = new Selecionadorpet(empresa.getPets)
+            let selecionadorPet = new SelecionadorPet(empresa.getPets)
             let pet = selecionadorPet.selecionarPet(nomePet)
             
             let indicePet = empresa.getPets.indexOf(pet)
             delete empresa.getPets[indicePet]
             break;
         case 23:
+            let nomePetEditar = entrada.receberTexto('Digite um pet para edição: ')
+            let selecionadorPetEditar = new SelecionadorPet(empresa.getPets)
+            let petEditar = selecionadorPetEditar.selecionarPet(nomePetEditar)
+
+            let editorPet = new EditorPet()
+            editorPet.editar(petEditar)
             break;
         case 0:
             execucao = false
