@@ -6,7 +6,7 @@ export default class SelecionadorProduto {
         this.produtos = produtos
     }
     public selecionarProduto(nomeProduto: string) {
-        let produtoAlvo = new Produto('')
+        let produtoAlvo = new Produto('', 0)
 
         this.produtos.forEach(produto => {
             if (nomeProduto === produto.getNome) {

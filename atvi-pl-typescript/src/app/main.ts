@@ -4,12 +4,14 @@ import CadastroCliente from "../negocio/cadastros/cadastroCliente";
 import CadastroPet from "../negocio/cadastros/cadastroPet";
 import CadastroProduto from "../negocio/cadastros/cadastroProduto";
 import CadastroServico from "../negocio/cadastros/cadastroServico";
-import ConsumirProduto from "../negocio/consumirProduto";
+import ConsumirProduto from "../negocio/consumiveis/consumirProduto";
+import ConsumirServico from "../negocio/consumiveis/consumirServico";
 import EditorCliente from "../negocio/edicoes/editorCliente";
 import EditorPet from "../negocio/edicoes/editorPet";
 import EditorProduto from "../negocio/edicoes/editorProduto";
 import EditorServico from "../negocio/edicoes/editorServicos";
 import ListagemClientes from "../negocio/listagens/listagemClientes";
+import ListagemConsumo from "../negocio/listagens/listagemConsumo";
 import ListagemPets from "../negocio/listagens/listagemPets";
 import ListagemProdutos from "../negocio/listagens/listagemProdutos";
 import ListagemServicos from "../negocio/listagens/listagemServicos";
@@ -103,12 +105,18 @@ while (execucao) {
             break;
         case 11:
             let consumirProduto = new ConsumirProduto(empresa.getProdutos, empresa.getClientes)
-            consumirProduto.cadastrar()
+            consumirProduto.consumir()
             
             break;
         case 12:
+            let consumirServico = new ConsumirServico(empresa.getServicos, empresa.getClientes)
+            consumirServico.cadastrar()
+
             break;
         case 13:
+            let listagemConsumo = new ListagemConsumo(empresa.getClientes)
+            listagemConsumo.listar()
+
             break;
         case 14:
             break;

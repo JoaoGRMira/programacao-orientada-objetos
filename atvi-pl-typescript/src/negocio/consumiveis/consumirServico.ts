@@ -1,9 +1,9 @@
-import Entrada from "../io/entrada"
-import Cliente from "../modelo/cliente/cliente"
-import Servico from "../modelo/servico"
-import Cadastro from "./cadastros/cadastro"
-import Selecionador from "./selecionadores/selecionador"
-import SelecionadorServico from "./selecionadores/selecionadorServico"
+import Entrada from "../../io/entrada"
+import Cliente from "../../modelo/cliente/cliente"
+import Servico from "../../modelo/servico"
+import Cadastro from "../cadastros/cadastro"
+import Selecionador from "../selecionadores/selecionador"
+import SelecionadorServico from "../selecionadores/selecionadorServico"
 
 export default class ConsumirServico extends Cadastro {
     private clientes: Array<Cliente>

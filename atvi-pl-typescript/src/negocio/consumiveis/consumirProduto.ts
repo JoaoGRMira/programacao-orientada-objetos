@@ -1,11 +1,11 @@
-import Entrada from "../io/entrada"
-import Cliente from "../modelo/cliente/cliente"
-import Produto from "../modelo/produto"
-import Cadastro from "./cadastros/cadastro"
-import Selecionador from "./selecionadores/selecionador"
-import SelecionadorProduto from "./selecionadores/selecionadorProduto"
+import Entrada from "../../io/entrada"
+import Cliente from "../../modelo/cliente/cliente"
+import Produto from "../../modelo/produto"
+import Selecionador from "../selecionadores/selecionador"
+import SelecionadorProduto from "../selecionadores/selecionadorProduto"
+import Consumivel from "./consumir"
 
-export default class ConsumirProduto extends Cadastro {
+export default class ConsumirProduto extends Consumivel{
     private clientes: Array<Cliente>
     private produtos: Array<Produto>
     private entrada: Entrada
@@ -16,7 +16,7 @@ export default class ConsumirProduto extends Cadastro {
         this.entrada = new Entrada()
     }
 
-    public cadastrar(): void {
+    public consumir(): void {
         console.log(`\nInício da requisição de produto`);
         let numeroCpf = this.entrada.receberTexto(`Por favor informe o CPF do cliente: `)
         let selecionador = new Selecionador(this.clientes)

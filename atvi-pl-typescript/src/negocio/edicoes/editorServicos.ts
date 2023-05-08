@@ -10,6 +10,8 @@ export default class EditorServico {
         console.log(`\nInício da edição do servico`);
         let nome = this.entrada.receberTexto(`Por favor informe o nome do servico: `)
         servico.nome = nome
+        let valor = this.entrada.receberNumero(`Por favor informe o valor do servico: `)
+        servico.valor = valor
         console.log(`\Edição concluída :)\n`);
     }
 }

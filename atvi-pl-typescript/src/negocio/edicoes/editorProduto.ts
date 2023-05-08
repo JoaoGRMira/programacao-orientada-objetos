@@ -10,6 +10,8 @@ export default class EditorProduto {
         console.log(`\nInício da edição do produto`);
         let nome = this.entrada.receberTexto(`Por favor informe o nome do produto: `)
         produto.nome = nome
+        let valor = this.entrada.receberNumero(`Por favor informe o valor do produto: `)
+        produto.valor = valor
         console.log(`\Edição concluída :)\n`);
     }
 }
