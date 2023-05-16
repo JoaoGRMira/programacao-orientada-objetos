@@ -11,6 +11,9 @@ import EditorPet from "../negocio/edicoes/editorPet";
 import EditorProduto from "../negocio/edicoes/editorProduto";
 import EditorServico from "../negocio/edicoes/editorServicos";
 import ListagemClientes from "../negocio/listagens/listagemClientes";
+import ListagemConsProdServ from "../negocio/listagens/listagemConsProdServ";
+import ListagemConsQuant from "../negocio/listagens/listagemConsQuant";
+import ListagemConsValor from "../negocio/listagens/listagemConsValor";
 import ListagemConsumo from "../negocio/listagens/listagemConsumo";
 import ListagemPets from "../negocio/listagens/listagemPets";
 import ListagemProdutos from "../negocio/listagens/listagemProdutos";
@@ -119,12 +122,21 @@ while (execucao) {
 
             break;
         case 14:
+            let listagemConsQuant = new ListagemConsQuant(empresa.getClientes)
+            listagemConsQuant.listar()
+
             break;
         case 15:
+            let listagemConsProdServ = new ListagemConsProdServ(empresa.getClientes)
+            listagemConsProdServ.listar()
+
             break;
         case 16:
             break;
         case 17:
+            let listagemConsValor = new ListagemConsValor(empresa.getClientes)
+            listagemConsValor.listar()
+
             break;
         case 18:
             let nomeProduto = entrada.receberTexto('Digite um produto para exclusão: ')
