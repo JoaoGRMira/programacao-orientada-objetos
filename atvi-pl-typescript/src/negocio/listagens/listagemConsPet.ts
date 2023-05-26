@@ -18,16 +18,16 @@ export default class ListagemConsPet extends Listagem {
   
     this.clientes.forEach((cliente) => {
       cliente.getPets.forEach((pet: Pet) => {
-        const racaTipo = `Raça: ${pet.getRaca} - Tipo: ${pet.getTipo}`;
+        const racaTipo = `Raça: ${pet.getRaca} \n Tipo: ${pet.getTipo}`;
   
         pet.getProdutosConsumidos.forEach((produto: Produto) => {
-          const quantidadeAtual = produtosServicosMap.get(`${racaTipo} - Produto: ${produto.getNome}`) || 0;
-          produtosServicosMap.set(`${racaTipo} - Produto: ${produto.getNome}`, quantidadeAtual + 1);
+          const quantidadeAtual = produtosServicosMap.get(`${racaTipo} \n- Produto: ${produto.getNome}`) || 0;
+          produtosServicosMap.set(`${racaTipo} \n- Produto: ${produto.getNome}`, quantidadeAtual + 1);
         });
   
         pet.getServicosConsumidos.forEach((servico) => {
-          const quantidadeAtual = produtosServicosMap.get(`${racaTipo} - Serviço: ${servico.getNome}`) || 0;
-          produtosServicosMap.set(`${racaTipo} - Serviço: ${servico.getNome}`, quantidadeAtual + 1);
+          const quantidadeAtual = produtosServicosMap.get(`${racaTipo} \n- Serviço: ${servico.getNome}`) || 0;
+          produtosServicosMap.set(`${racaTipo} \n- Serviço: ${servico.getNome}`, quantidadeAtual + 1);
         });
       });
     });
