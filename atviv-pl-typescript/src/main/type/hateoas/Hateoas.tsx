@@ -1,0 +1,4 @@
+export interface Hateoas<T> {
+    adicionarLink(lista: T[]): void;
+    adicionarLink(objeto: T): void;
+  }
