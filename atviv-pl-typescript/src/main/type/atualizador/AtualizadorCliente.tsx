@@ -1,9 +1,9 @@
-import { VerificadorStringNula } from './VerificadorStringNula';
-import { VerificadorEnderecoNulo } from './VerificadorEnderecoNulo';
-import { AtualizadorEndereco } from './AtualizadorEndereco';
-import { VerificadorTelefoneNulo } from './VerificadorTelefoneNulo';
-import { Cliente } from './Cliente';
-import { Telefone } from './Telefone';
+import { VerificadorStringNula } from './verificadores/VerificadorStringNula';
+import { VerificadorEnderecoNulo } from './verificadores/VerificadorEnderecoNulo';
+import { AtualizadorEndereco } from './atualizadores/AtualizadorEndereco';
+import { VerificadorTelefoneNulo } from './verificadores/VerificadorTelefoneNulo';
+import { Cliente } from './modelo/Cliente';
+import { Telefone } from './modelo/Telefone';
 import { Atualizador } from './Atualizador';
 
 export class AtualizadorCliente implements Atualizador<Cliente> {
@@ -24,31 +24,31 @@ export class AtualizadorCliente implements Atualizador<Cliente> {
     this.verificadorTelefone = verificadorTelefone;
   }
 
-  public atualizar(alvo: Cliente, atualizacao: Cliente): void {
-    if (!this.verificadorString.verificar(atualizacao.getNome())) {
-      alvo.setNome(atualizacao.getNome());
+  atualizar(alvo: Cliente, atualizacao: Cliente): void {
+    if (!this.verificadorString.verificar(atualizacao.nome)) {
+      alvo.nome = atualizacao.nome;
     }
-    if (!this.verificadorString.verificar(atualizacao.getEmail())) {
-      alvo.setEmail(atualizacao.getEmail());
+    if (!this.verificadorString.verificar(atualizacao.email)) {
+      alvo.email = atualizacao.email;
     }
-    if (!this.verificadorString.verificar(atualizacao.getNomeSocial())) {
-      alvo.setNomeSocial(atualizacao.getNomeSocial());
+    if (!this.verificadorString.verificar(atualizacao.nomeSocial)) {
+      alvo.nomeSocial = atualizacao.nomeSocial;
     }
-    if (!this.verificadorEndereco.verificar(atualizacao.getEndereco())) {
-      if (alvo.getEndereco() !== null) {
-        this.atualizadorEndereco.atualizar(alvo.getEndereco(), atualizacao.getEndereco());
+    if (!this.verificadorEndereco.verificar(atualizacao.endereco)) {
+      if (alvo.endereco !== null) {
+        this.atualizadorEndereco.atualizar(alvo.endereco, atualizacao.endereco);
       } else {
-        alvo.setEndereco(atualizacao.getEndereco());
+        alvo.endereco = atualizacao.endereco;
       }
     }
-    if (atualizacao.getTelefones().length > 0) {
-      alvo.getTelefones().length = 0;
-      for (const telefone of atualizacao.getTelefones()) {
+    if (atualizacao.telefones.length > 0) {
+      alvo.telefones = [];
+      for (const telefone of atualizacao.telefones) {
         if (!this.verificadorTelefone.verificar(telefone)) {
           const telefoneNovo: Telefone = new Telefone();
-          telefoneNovo.setDdd(telefone.getDdd());
-          telefoneNovo.setNumero(telefone.getNumero());
-          alvo.getTelefones().push(telefoneNovo);
+          telefoneNovo.ddd = telefone.ddd;
+          telefoneNovo.numero = telefone.numero;
+          alvo.telefones.push(telefoneNovo);
         }
       }
     }

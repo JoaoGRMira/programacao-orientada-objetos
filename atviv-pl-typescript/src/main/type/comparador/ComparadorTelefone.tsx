@@ -1,20 +1,20 @@
 import { Telefone } from './Telefone';
+import { Comparator } from './Comparator';
 
-function comparadorTelefone(o1: Telefone, o2: Telefone): number {
-  let id1: string = o1.getDdd() + o1.getNumero();
-  id1 = id1.trim().toLowerCase();
+export class ComparadorTelefone implements Comparator<Telefone> {
+  compare(o1: Telefone, o2: Telefone): number {
+    const id1: string = o1.ddd + o1.numero;
+    const id2: string = o2.ddd + o2.numero;
 
-  let id2: string = o2.getDdd() + o2.getNumero();
-  id2 = id2.trim().toLowerCase();
+    const id1LowerCase: string = id1.trim().toLowerCase();
+    const id2LowerCase: string = id2.trim().toLowerCase();
 
-  if (id1 < id2) {
-    return -1;
-  } else if (id1 > id2) {
-    return 1;
-  } else {
-    return 0;
+    if (id1LowerCase < id2LowerCase) {
+      return -1;
+    } else if (id1LowerCase > id2LowerCase) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 }
-
-const telefones: Telefone[] = /* Obtenha a lista de telefones */;
-telefones.sort(comparadorTelefone);

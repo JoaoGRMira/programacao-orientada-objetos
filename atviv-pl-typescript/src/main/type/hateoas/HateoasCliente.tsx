@@ -1,19 +1,27 @@
-import { Link } from 'spring-hateoas';
+import { Component } from 'typescript-starter';
+import { List } from 'java.util';
+import { Link } from 'org.springframework.hateoas';
+import { WebMvcLinkBuilder } from 'org.springframework.hateoas.server.mvc';
+import { ControleCliente } from '../controle/ControleCliente';
+import { Cliente } from 'com.fatec.pl.modelo';
 import { Hateoas } from './Hateoas';
-import { ControleCliente } from './ControleCliente';
-import { Cliente } from './Cliente';
 
+@Component
 export class HateoasCliente implements Hateoas<Cliente> {
-  adicionarLink(lista: Cliente[]): void {
-    for (const cliente of lista) {
-      const id: number = cliente.id;
-      const linkProprio: Link = Link.to(ControleCliente).obterCliente(id).withSelfRel();
-      cliente.add(linkProprio);
-    }
-  }
+adicionarLinkLista(lista: List<Cliente>): void {
+for (const cliente of lista) {
+const id: number = cliente.getId();
+const linkProprio: Link = WebMvcLinkBuilder
+.linkTo(WebMvcLinkBuilder.methodOn(ControleCliente).obterCliente(id))
+.withSelfRel();
+cliente.add(linkProprio);
+}
+}
 
-  adicionarLink(objeto: Cliente): void {
-    const linkProprio: Link = Link.to(ControleCliente).obterClientes().withRel('clientes');
-    objeto.add(linkProprio);
-  }
+adicionarLink(objeto: Cliente): void {
+const linkProprio: Link = WebMvcLinkBuilder
+.linkTo(WebMvcLinkBuilder.methodOn(ControleCliente).obterClientes())
+.withRel('clientes');
+objeto.add(linkProprio);
+}
 }

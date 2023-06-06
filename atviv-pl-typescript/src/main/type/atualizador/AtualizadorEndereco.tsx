@@ -1,5 +1,5 @@
-import { VerificadorStringNula } from './VerificadorStringNula';
-import { Endereco } from './Endereco';
+import { VerificadorStringNula } from './verificadores/VerificadorStringNula';
+import { Endereco } from './modelo/Endereco';
 import { Atualizador } from './Atualizador';
 
 export class AtualizadorEndereco implements Atualizador<Endereco> {
@@ -9,27 +9,27 @@ export class AtualizadorEndereco implements Atualizador<Endereco> {
     this.verificadorString = verificadorString;
   }
 
-  public atualizar(alvo: Endereco, atualizacao: Endereco): void {
-    if (!this.verificadorString.verificar(atualizacao.getEstado())) {
-      alvo.setEstado(atualizacao.getEstado());
+  atualizar(alvo: Endereco, atualizacao: Endereco): void {
+    if (!this.verificadorString.verificar(atualizacao.estado)) {
+      alvo.estado = atualizacao.estado;
     }
-    if (!this.verificadorString.verificar(atualizacao.getCidade())) {
-      alvo.setCidade(atualizacao.getCidade());
+    if (!this.verificadorString.verificar(atualizacao.cidade)) {
+      alvo.cidade = atualizacao.cidade;
     }
-    if (!this.verificadorString.verificar(atualizacao.getBairro())) {
-      alvo.setBairro(atualizacao.getBairro());
+    if (!this.verificadorString.verificar(atualizacao.bairro)) {
+      alvo.bairro = atualizacao.bairro;
     }
-    if (!this.verificadorString.verificar(atualizacao.getRua())) {
-      alvo.setRua(atualizacao.getRua());
+    if (!this.verificadorString.verificar(atualizacao.rua)) {
+      alvo.rua = atualizacao.rua;
     }
-    if (!this.verificadorString.verificar(atualizacao.getNumero())) {
-      alvo.setNumero(atualizacao.getNumero());
+    if (!this.verificadorString.verificar(atualizacao.numero)) {
+      alvo.numero = atualizacao.numero;
     }
-    if (!this.verificadorString.verificar(atualizacao.getCodigoPostal())) {
-      alvo.setCodigoPostal(atualizacao.getCodigoPostal());
+    if (!this.verificadorString.verificar(atualizacao.codigoPostal)) {
+      alvo.codigoPostal = atualizacao.codigoPostal;
     }
-    if (!this.verificadorString.verificar(atualizacao.getInformacoesAdicionais())) {
-      alvo.setInformacoesAdicionais(atualizacao.getInformacoesAdicionais());
+    if (!this.verificadorString.verificar(atualizacao.informacoesAdicionais)) {
+      alvo.informacoesAdicionais = atualizacao.informacoesAdicionais;
     }
   }
 }

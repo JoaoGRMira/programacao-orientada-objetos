@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
-import { Controller, Get, Post, Put, Delete, Body, Param, HttpStatus } from '@nestjs/common';
-import { RepositorioCliente } from './RepositorioCliente';
-import { Cliente } from './Cliente';
-import { AtualizadorCliente } from './AtualizadorCliente';
-import { HateoasCliente } from './HateoasCliente';
+import { HttpStatus } from 'http-status-codes';
+import { Cliente } from '../models/Cliente';
+import { RepositorioCliente } from '../repositories/RepositorioCliente';
+import { HateoasCliente } from '../hateoas/HateoasCliente';
+import { AtualizadorCliente } from '../atualizador/AtualizadorCliente';
 
-@Controller('cliente')
 export class ControleCliente {
   constructor(
     private repositorio: RepositorioCliente,
@@ -13,54 +12,53 @@ export class ControleCliente {
     private atualizador: AtualizadorCliente
   ) {}
 
-  @Get(':id')
-  public obterCliente(@Param('id') id: string, @Response() res: Response): void {
-    const cliente: Cliente | undefined = this.repositorio.findById(parseInt(id, 10));
-    if (cliente !== undefined) {
-      this.hateoas.adicionarLink(cliente);
-      res.status(HttpStatus.FOUND).json(cliente);
+  public obterCliente(req: Request, res: Response): Response {
+    const id: number = parseInt(req.params.id);
+    const cliente: Cliente = this.repositorio.findById(id);
+    if (cliente !== null) {
+      this.hateoas.adicionarLinkLista(cliente);
+      return res.status(HttpStatus.FOUND).json(cliente);
     } else {
-      res.sendStatus(HttpStatus.NOT_FOUND);
+      return res.sendStatus(HttpStatus.NOT_FOUND);
     }
   }
 
-  @Get('clientes')
-  public obterClientes(@Response() res: Response): void {
+  public obterClientes(req: Request, res: Response): Response {
     const clientes: Cliente[] = this.repositorio.findAll();
     this.hateoas.adicionarLink(clientes);
-    res.status(HttpStatus.FOUND).json(clientes);
+    return res.status(HttpStatus.FOUND).json(clientes);
   }
 
-  @Put('atualizar')
-  public atualizarCliente(@Body() atualizacao: Cliente, @Response() res: Response): void {
-    let status: HttpStatus = HttpStatus.BAD_REQUEST;
-    const cliente: Cliente | undefined = this.repositorio.getById(atualizacao.id);
-    if (cliente !== undefined) {
+  public atualizarCliente(req: Request, res: Response): Response {
+    const atualizacao: Cliente = req.body;
+    const cliente: Cliente = this.repositorio.getById(atualizacao.getId());
+    if (cliente !== null) {
       this.atualizador.atualizar(cliente, atualizacao);
       this.repositorio.save(cliente);
-      status = HttpStatus.OK;
+      return res.sendStatus(HttpStatus.OK);
+    } else {
+      return res.sendStatus(HttpStatus.BAD_REQUEST);
     }
-    res.sendStatus(status);
   }
 
-  @Post('cadastrar')
-  public cadastrarCliente(@Body() novo: Cliente, @Response() res: Response): void {
-    let status: HttpStatus = HttpStatus.BAD_REQUEST;
+  public cadastrarCliente(req: Request, res: Response): Response {
+    const novo: Cliente = req.body;
     if (novo !== null) {
       this.repositorio.save(novo);
-      status = HttpStatus.OK;
+      return res.sendStatus(HttpStatus.OK);
+    } else {
+      return res.sendStatus(HttpStatus.BAD_REQUEST);
     }
-    res.sendStatus(status);
   }
 
-  @Delete('excluir')
-  public excluirCliente(@Body() exclusao: Cliente, @Response() res: Response): void {
-    const cliente: Cliente | undefined = this.repositorio.getById(exclusao.id);
-    if (cliente === undefined) {
-      res.sendStatus(HttpStatus.BAD_REQUEST);
+  public excluirCliente(req: Request, res: Response): Response {
+    const exclusao: Cliente = req.body;
+    const cliente: Cliente = this.repositorio.getById(exclusao.getId());
+    if (cliente === null) {
+      return res.sendStatus(HttpStatus.BAD_REQUEST);
     } else {
       this.repositorio.delete(cliente);
-      res.sendStatus(HttpStatus.OK);
+      return res.sendStatus(HttpStatus.OK);
     }
   }
 }
