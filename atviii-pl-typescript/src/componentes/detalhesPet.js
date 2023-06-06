@@ -1,16 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-export default function DetalhesCliente(props) {
+export default function DetalhesPet(props) {
     let tema = props.tema
-    const { nome, nomeSocial, cpf, rg, produtosConsumidos, servicosConsumidos } = this.props;
+    const { cliente ,nome, tipo, raca, genero } = this.props;
     return (
         <div>
-        <h1>Detalhes do Cliente</h1>
+        <h1>Detalhes do Pet</h1>
+        <p>Tutor: {cliente}</p>
         <p>Nome: {nome}</p>
-        <p>Nome Social: {nomeSocial}</p>
-        <p>CPF: {cpf}</p>
-        <p>RG: {rg}</p>
-        <p>Produtos consumidos: {produtosConsumidos}</p>
-        <p>Serviços consumidos: {servicosConsumidos}</p>
+        <p>Tipo: {tipo}</p>
+        <p>Raça: {raca}</p>
+        <p>Gênero: {genero}</p>
         <div className="input-group mb-3">
           <button className="btn btn-outline-secondary" type="button" style={{background: "#AB8262", color: "#faf6f6"}}>Editar</button>
         </div>

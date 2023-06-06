@@ -19,9 +19,9 @@ export default function BarraNavegacao(props) {
     let tema = props.tema
     return (
         <>
-            <nav className="navbar navbar-expand-lg" data-bs-theme="light" style={{ backgroundColor: tema, marginBottom: 10 }}>
+            <nav className="navbar navbar-expand-lg" data-bs-theme="light" style={{ backgroundColor: "#AB8262", marginBottom: 10 }}>
                 <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1">PetLovers</span>
+                    <span className="navbar-brand mb-0 h1" style={{color: "#faf6f6"}}>PetLovers</span>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -1,4 +1,4 @@
-export default function FormularioCadastroCliente(props) {
+export default function FormularioCadastroProduto(props) {
     let tema = props.tema
     return (
         <div className="container-fluid">
@@ -10,7 +10,7 @@ export default function FormularioCadastroCliente(props) {
                     <input type="text" className="form-control" placeholder="Valor" aria-label="Valor" aria-describedby="basic-addon1" />
                 </div>
                 <div className="input-group mb-3">
-                    <button className="btn btn-outline-secondary" type="button" style={{ background: tema }}>Cadastrar</button>
+                    <button className="btn btn-outline-secondary" type="button" style={{background: "#AB8262", color: "#faf6f6"}}>Cadastrar</button>
                 </div>
             </form>
         </div>
