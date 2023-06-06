@@ -22,7 +22,7 @@ export default class BarraNavegacao extends Component<props>{
         } else {
             let lista = this.props.botoes.map(valor =>
                 <li key={valor} className="nav-item">
-                    <a className="nav-link" href="#" onClick={(e) => this.props.seletorView(valor, e)}>{valor}</a>
+                    <a className="nav-link" href="#" onClick={(e) => this.props.seletorView(valor, e)}style={{ color: "#faf6f6" }}>{valor}</a>
                 </li>
             )
             return lista
@@ -33,9 +33,9 @@ export default class BarraNavegacao extends Component<props>{
         let tema = this.props.tema
         return (
             <>
-                <nav className="navbar navbar-expand-lg" data-bs-theme="light" style={{ backgroundColor: tema, marginBottom: 10 }}>
+                <nav className="navbar navbar-expand-lg" data-bs-theme="light" style={{ backgroundColor: "#AB8262", marginBottom: 10 }}>
                     <div className="container-fluid">
-                        <span className="navbar-brand mb-0 h1">PetLovers</span>
+                        <span className="navbar-brand mb-0 h1" style={{color: "#faf6f6"}}>PetLovers</span>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>

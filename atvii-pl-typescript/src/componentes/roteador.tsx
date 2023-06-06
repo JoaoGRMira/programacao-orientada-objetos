@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import BarraNavegacao from "./barraNavegacao";
-import ListaCliente from "./listaClientes";
 import FormularioCadastroCliente from "./formularioCadastroCliente";
-import ListaPet from "./listaPets";
-import ListaServico from "./listaServicos";
-import ListaProduto from "./listaProdutos";
 import FormularioCadastroPet from "./formularioCadastroPet";
 import FormularioCadastroProduto from "./formularioCadastroProduto";
 import FormularioCadastroServico from "./formularioCadastroServico";
+import FormularioConsumoProduto from "./formularioConsumoProduto";
+import FormularioConsumoServico from "./formularioConsumoServico";
+import ListaCliente from "./listaClientes";
+import ListaPet from "./listaPets";
+import ListaServico from "./listaServicos";
+import ListaProduto from "./listaProdutos";
+import ListaClientesMaisConsumiramQuantidade from "./listaClientesMaisConsumiramQuantidade";
+import ListaGeralMaisConsumidos from "./listaGeralMaisConsumidos";
+import ListaServProdMaisConsumidosTipoRaca from "./listaServProdMaisConsumidosTipoRaca";
+import ListaClientesMaisConsumiramValor from "./listaClientesMaisConsumiramValor";
 import DetalhesCliente from "./detalhesCliente";
 import DetalhesPet from "./detalhesPet";
+import DetalhesProduto from "./detalhesProduto";
+import DetalhesServico from "./detalhesServico";
 
 type state = {
   tela: string,
@@ -21,7 +29,7 @@ export default class Roteador extends Component<{}, state> {
   constructor(props: {} | Readonly<{}>) {
     super(props);
     this.state = {
-      tela: "Clientes",
+      tela: "Cadastros",
       clienteSelecionado: null,
       petSelecionado: null
     };
@@ -42,7 +50,7 @@ export default class Roteador extends Component<{}, state> {
       <BarraNavegacao
         seletorView={this.selecionarView}
         tema="#e3f2fd"
-        botoes={["Clientes", "Cadastros", "Pets", "Produtos", "Serviços"]}
+        botoes={["Cadastros", "Solicitar produto/serviço", "Clientes", "Pets", "Produtos", "Serviços", "Consumos"]}
       />
     );
 
@@ -80,20 +88,49 @@ export default class Roteador extends Component<{}, state> {
       );
     }
 
-    if (this.state.tela === "Serviços") {
-      return (
-        <>
-          {barraNavegacao}
-          <ListaServico tema="#e3f2fd" />
-        </>
-      );
-    }
 
     if (this.state.tela === "Produtos") {
       return (
         <>
           {barraNavegacao}
-          <ListaProduto tema="#e3f2fd" />
+          <ListaProduto tema="#e3f2fd" seletorView={this.selecionarView}/>
+        </>
+      );
+    }
+
+    if (this.state.tela === "Serviços") {
+      return (
+        <>
+          {barraNavegacao}
+          <ListaServico tema="#e3f2fd" seletorView={this.selecionarView}/>
+        </>
+      );
+    }
+
+    if (this.state.tela === "Solicitar produto/serviço") {
+      return (
+        <>
+          {barraNavegacao}
+          <h1>Solicitar um produto</h1>
+          <FormularioConsumoProduto tema="#e3f2fd" />
+          <h1>Solicitar um serviço</h1>
+          <FormularioConsumoServico tema="#e3f2fd" />
+        </>
+      );
+    }
+
+    if (this.state.tela === "Consumos") {
+      return (
+        <>
+          {barraNavegacao}
+          <h1>Lista dos 10 clientes que mais consumiram produtos/serviços, em quantidade</h1>
+          <ListaClientesMaisConsumiramQuantidade tema="#e3f2fd" />
+          <h1>Lista geral dos serviços/produtos mais consumidos</h1>
+          <ListaGeralMaisConsumidos tema="#e3f2fd" />
+          <h1>Lista dos serviços/produtos mais consumidos por tipo e raça de pets</h1>
+          <ListaServProdMaisConsumidosTipoRaca tema="#e3f2fd" />
+          <h1>Lista dos 5 clientes que mais consumiram em valor</h1>
+          <ListaClientesMaisConsumiramValor tema="#e3f2fd" />
         </>
       );
     }
@@ -103,7 +140,9 @@ export default class Roteador extends Component<{}, state> {
         nome: "Nome do cliente",
         nomeSocial: "Nome social",
         cpf: "000.000.000-00",
-        email: "cliente@email.com"
+        rg: "00.000.000-0",
+        produtosConsumidos: "produtos",
+        servicosConsumidos: "serviços",
       };
 
       return (
@@ -127,6 +166,34 @@ export default class Roteador extends Component<{}, state> {
         <>
           {barraNavegacao}
           <DetalhesPet {...detalhesPet} />
+        </>
+      );
+    }
+
+    if (this.state.tela === "DetalhesProduto") {
+      const detalhesProduto = {
+        nome: 'Produto',
+        valor: 'Valor'
+      };
+
+      return (
+        <>
+          {barraNavegacao}
+          <DetalhesProduto {...detalhesProduto} />
+        </>
+      );
+    }
+
+    if (this.state.tela === "DetalhesServico") {
+      const detalhesServico = {
+        nome: 'Servico',
+        valor: 'Valor'
+      };
+
+      return (
+        <>
+          {barraNavegacao}
+          <DetalhesServico {...detalhesServico} />
         </>
       );
     }
