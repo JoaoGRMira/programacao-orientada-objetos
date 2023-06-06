@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { HttpStatus } from 'http-status-codes';
-import { Cliente } from '../models/Cliente';
-import { RepositorioCliente } from '../repositories/RepositorioCliente';
+import { Cliente } from '../modelo/Cliente';
+import { RepositorioCliente } from '../repositorio/RepositorioCliente';
 import { HateoasCliente } from '../hateoas/HateoasCliente';
 import { AtualizadorCliente } from '../atualizador/AtualizadorCliente';
 

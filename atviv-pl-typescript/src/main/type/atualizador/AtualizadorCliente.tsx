@@ -1,9 +1,9 @@
-import { VerificadorStringNula } from './verificadores/VerificadorStringNula';
-import { VerificadorEnderecoNulo } from './verificadores/VerificadorEnderecoNulo';
-import { AtualizadorEndereco } from './atualizadores/AtualizadorEndereco';
-import { VerificadorTelefoneNulo } from './verificadores/VerificadorTelefoneNulo';
-import { Cliente } from './modelo/Cliente';
-import { Telefone } from './modelo/Telefone';
+import { VerificadorStringNula } from '../verificador/VerificadorStringNula';
+import { VerificadorEnderecoNulo } from '../verificador/VerificadorEnderecoNulo';
+import { AtualizadorEndereco } from '../atualizador/AtualizadorEndereco';
+import { VerificadorTelefoneNulo } from '../verificador/VerificadorTelefoneNulo';
+import { Cliente } from '../modelo/Cliente';
+import { Telefone } from '../modelo/Telefone';
 import { Atualizador } from './Atualizador';
 
 export class AtualizadorCliente implements Atualizador<Cliente> {

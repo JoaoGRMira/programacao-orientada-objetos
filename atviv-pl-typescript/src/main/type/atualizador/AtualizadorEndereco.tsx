@@ -1,5 +1,5 @@
-import { VerificadorStringNula } from './verificadores/VerificadorStringNula';
-import { Endereco } from './modelo/Endereco';
+import { VerificadorStringNula } from '../verificador/VerificadorStringNula';
+import { Endereco } from '../modelo/Endereco';
 import { Atualizador } from './Atualizador';
 
 export class AtualizadorEndereco implements Atualizador<Endereco> {

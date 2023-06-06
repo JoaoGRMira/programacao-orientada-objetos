@@ -1,4 +1,4 @@
-import { Telefone } from './Telefone';
+import { Telefone } from '../modelo/Telefone';
 import { Comparator } from './Comparator';
 
 export class ComparadorTelefone implements Comparator<Telefone> {

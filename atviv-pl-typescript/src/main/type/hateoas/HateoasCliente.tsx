@@ -3,7 +3,7 @@ import { List } from 'java.util';
 import { Link } from 'org.springframework.hateoas';
 import { WebMvcLinkBuilder } from 'org.springframework.hateoas.server.mvc';
 import { ControleCliente } from '../controle/ControleCliente';
-import { Cliente } from 'com.fatec.pl.modelo';
+import { Cliente } from '../modelo/Cliente';
 import { Hateoas } from './Hateoas';
 
 @Component
