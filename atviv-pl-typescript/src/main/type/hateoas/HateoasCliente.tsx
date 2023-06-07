@@ -1,27 +1,33 @@
-import { Component } from 'typescript-starter';
-import { List } from 'java.util';
-import { Link } from 'org.springframework.hateoas';
-import { WebMvcLinkBuilder } from 'org.springframework.hateoas.server.mvc';
-import { ControleCliente } from '../controle/ControleCliente';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Cliente } from '../modelo/Cliente';
-import { Hateoas } from './Hateoas';
 
-@Component
-export class HateoasCliente implements Hateoas<Cliente> {
-adicionarLinkLista(lista: List<Cliente>): void {
-for (const cliente of lista) {
-const id: number = cliente.getId();
-const linkProprio: Link = WebMvcLinkBuilder
-.linkTo(WebMvcLinkBuilder.methodOn(ControleCliente).obterCliente(id))
-.withSelfRel();
-cliente.add(linkProprio);
-}
+interface Hateoas<T> {
+  adicionarLink(lista: T[]): void;
+  adicionarLink(objeto: T): void;
 }
 
-adicionarLink(objeto: Cliente): void {
-const linkProprio: Link = WebMvcLinkBuilder
-.linkTo(WebMvcLinkBuilder.methodOn(ControleCliente).obterClientes())
-.withRel('clientes');
-objeto.add(linkProprio);
+class HateoasCliente implements Hateoas<Cliente> {
+  public adicionarLink(lista: Cliente[]): void {
+    lista.forEach((cliente) => {
+      const id = cliente.id;
+      const linkProprio = (
+        <Link to={`/cliente/${id}`} rel="self" key={id}>
+          {cliente.nome}
+        </Link>
+      );
+      cliente.links = cliente.links ? [...cliente.links, linkProprio] : [linkProprio];
+    });
+  }
+
+  public adicionarLink(objeto: Cliente): void {
+    const linkProprio = (
+      <Link to="/cliente/clientes" rel="clientes" key="clientes">
+        Ver todos os clientes
+      </Link>
+    );
+    objeto.links = objeto.links ? [...objeto.links, linkProprio] : [linkProprio];
+  }
 }
-}
+
+export default HateoasCliente;

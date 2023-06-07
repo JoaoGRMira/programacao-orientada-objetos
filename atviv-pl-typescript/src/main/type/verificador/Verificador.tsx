@@ -1,3 +1,3 @@
-public interface Verificador<T> {
-	verificar(T objeto): void
-}
+export interface Verificador<T> {
+	verificar(objeto: T): boolean;
+  }  

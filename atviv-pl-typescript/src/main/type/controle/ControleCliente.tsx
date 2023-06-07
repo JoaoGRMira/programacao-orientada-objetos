@@ -1,64 +1,65 @@
 import { Request, Response } from 'express';
-import { HttpStatus } from 'http-status-codes';
-import { Cliente } from '../modelo/Cliente';
-import { RepositorioCliente } from '../repositorio/RepositorioCliente';
-import { HateoasCliente } from '../hateoas/HateoasCliente';
-import { AtualizadorCliente } from '../atualizador/AtualizadorCliente';
+import Cliente from '../modelo/Cliente';
+import RepositorioCliente from '../repositorio/RepositorioCliente';
+import HateoasCliente from '../hateoas/HateoasCliente';
+import AtualizadorCliente from '../atualizador/AtualizadorCliente';
 
-export class ControleCliente {
-  constructor(
-    private repositorio: RepositorioCliente,
-    private hateoas: HateoasCliente,
-    private atualizador: AtualizadorCliente
-  ) {}
+class ControleCliente {
+  private repositorio: RepositorioCliente;
+  private hateoas: HateoasCliente;
+  private atualizador: AtualizadorCliente;
 
-  public obterCliente(req: Request, res: Response): Response {
+  constructor() {
+    this.repositorio = new RepositorioCliente();
+    this.hateoas = new HateoasCliente();
+    this.atualizador = new AtualizadorCliente();
+  }
+
+  public obterCliente(req: Request, res: Response): void {
     const id: number = parseInt(req.params.id);
-    const cliente: Cliente = this.repositorio.findById(id);
-    if (cliente !== null) {
-      this.hateoas.adicionarLinkLista(cliente);
-      return res.status(HttpStatus.FOUND).json(cliente);
+    const cliente: Cliente | undefined = this.repositorio.obterPorId(id);
+    if (cliente) {
+      this.hateoas.adicionarLink(cliente);
+      res.status(200).json(cliente);
     } else {
-      return res.sendStatus(HttpStatus.NOT_FOUND);
+      res.status(404).send('Cliente não encontrado');
     }
   }
 
-  public obterClientes(req: Request, res: Response): Response {
-    const clientes: Cliente[] = this.repositorio.findAll();
+  public obterClientes(req: Request, res: Response): void {
+    const clientes: Cliente[] = this.repositorio.obterTodos();
     this.hateoas.adicionarLink(clientes);
-    return res.status(HttpStatus.FOUND).json(clientes);
+    res.status(200).json(clientes);
   }
 
-  public atualizarCliente(req: Request, res: Response): Response {
+  public atualizarCliente(req: Request, res: Response): void {
     const atualizacao: Cliente = req.body;
-    const cliente: Cliente = this.repositorio.getById(atualizacao.getId());
-    if (cliente !== null) {
+    const cliente: Cliente | undefined = this.repositorio.obterPorId(atualizacao.id);
+    if (cliente) {
       this.atualizador.atualizar(cliente, atualizacao);
-      this.repositorio.save(cliente);
-      return res.sendStatus(HttpStatus.OK);
+      // this.repositorio.salvar(cliente); // Implementar essa função no RepositorioCliente
+      res.status(200).send('Cliente atualizado com sucesso');
     } else {
-      return res.sendStatus(HttpStatus.BAD_REQUEST);
+      res.status(404).send('Cliente não encontrado');
     }
   }
 
-  public cadastrarCliente(req: Request, res: Response): Response {
-    const novo: Cliente = req.body;
-    if (novo !== null) {
-      this.repositorio.save(novo);
-      return res.sendStatus(HttpStatus.OK);
-    } else {
-      return res.sendStatus(HttpStatus.BAD_REQUEST);
-    }
+  public cadastrarCliente(req: Request, res: Response): void {
+    const novoCliente: Cliente = req.body;
+    this.repositorio.salvar(novoCliente);
+    res.status(200).send('Cliente cadastrado com sucesso');
   }
 
-  public excluirCliente(req: Request, res: Response): Response {
+  public excluirCliente(req: Request, res: Response): void {
     const exclusao: Cliente = req.body;
-    const cliente: Cliente = this.repositorio.getById(exclusao.getId());
-    if (cliente === null) {
-      return res.sendStatus(HttpStatus.BAD_REQUEST);
+    const cliente: Cliente | undefined = this.repositorio.obterPorId(exclusao.id);
+    if (cliente) {
+      this.repositorio.excluir(cliente);
+      res.status(200).send('Cliente excluído com sucesso');
     } else {
-      this.repositorio.delete(cliente);
-      return res.sendStatus(HttpStatus.OK);
+      res.status(404).send('Cliente não encontrado');
     }
   }
 }
+
+export default ControleCliente;

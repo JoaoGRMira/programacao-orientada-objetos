@@ -1,12 +1,12 @@
-import { VerificadorStringNula } from '../verificador/VerificadorStringNula';
-import { VerificadorEnderecoNulo } from '../verificador/VerificadorEnderecoNulo';
-import { AtualizadorEndereco } from '../atualizador/AtualizadorEndereco';
-import { VerificadorTelefoneNulo } from '../verificador/VerificadorTelefoneNulo';
-import { Cliente } from '../modelo/Cliente';
-import { Telefone } from '../modelo/Telefone';
+import VerificadorStringNula from './VerificadorStringNula';
+import VerificadorEnderecoNulo from './VerificadorEnderecoNulo';
+import AtualizadorEndereco from './AtualizadorEndereco';
+import VerificadorTelefoneNulo from './VerificadorTelefoneNulo';
+import Cliente from './Cliente';
 import { Atualizador } from './Atualizador';
+import { Telefone } from '../modelo/Telefone';
 
-export class AtualizadorCliente implements Atualizador<Cliente> {
+class AtualizadorCliente implements Atualizador<Cliente> {
   private verificadorString: VerificadorStringNula;
   private verificadorEndereco: VerificadorEnderecoNulo;
   private atualizadorEndereco: AtualizadorEndereco;
@@ -24,7 +24,7 @@ export class AtualizadorCliente implements Atualizador<Cliente> {
     this.verificadorTelefone = verificadorTelefone;
   }
 
-  atualizar(alvo: Cliente, atualizacao: Cliente): void {
+  public atualizar(alvo: Cliente, atualizacao: Cliente): void {
     if (!this.verificadorString.verificar(atualizacao.nome)) {
       alvo.nome = atualizacao.nome;
     }
@@ -35,22 +35,18 @@ export class AtualizadorCliente implements Atualizador<Cliente> {
       alvo.nomeSocial = atualizacao.nomeSocial;
     }
     if (!this.verificadorEndereco.verificar(atualizacao.endereco)) {
-      if (alvo.endereco !== null) {
-        this.atualizadorEndereco.atualizar(alvo.endereco, atualizacao.endereco);
-      } else {
-        alvo.endereco = atualizacao.endereco;
-      }
+      this.atualizadorEndereco.atualizar(alvo.endereco, atualizacao.endereco);
     }
     if (atualizacao.telefones.length > 0) {
       alvo.telefones = [];
       for (const telefone of atualizacao.telefones) {
         if (!this.verificadorTelefone.verificar(telefone)) {
-          const telefoneNovo: Telefone = new Telefone();
-          telefoneNovo.ddd = telefone.ddd;
-          telefoneNovo.numero = telefone.numero;
+          const telefoneNovo: Telefone = { ...telefone };
           alvo.telefones.push(telefoneNovo);
         }
       }
     }
   }
 }
+
+export default AtualizadorCliente;

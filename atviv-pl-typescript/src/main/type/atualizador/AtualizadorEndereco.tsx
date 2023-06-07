@@ -1,8 +1,8 @@
-import { VerificadorStringNula } from '../verificador/VerificadorStringNula';
-import { Endereco } from '../modelo/Endereco';
+import VerificadorStringNula from '../verificador/VerificadorStringNula';
+import Endereco from '../modelo/Endereco';
 import { Atualizador } from './Atualizador';
 
-export class AtualizadorEndereco implements Atualizador<Endereco> {
+class AtualizadorEndereco implements Atualizador<Endereco> {
   private verificadorString: VerificadorStringNula;
 
   constructor(verificadorString: VerificadorStringNula) {
@@ -33,3 +33,5 @@ export class AtualizadorEndereco implements Atualizador<Endereco> {
     }
   }
 }
+
+export default AtualizadorEndereco;

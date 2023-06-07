@@ -1,4 +1,3 @@
 export interface Comparator<T> {
-    compare(a: T, b: T): number;
-  }
-  
+  compare(o1: T, o2: T): number;
+}
