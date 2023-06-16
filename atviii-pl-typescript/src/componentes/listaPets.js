@@ -6,8 +6,8 @@ export default function ListaPet(props) {
     };
     
     return (
-        <div className="container-fluid">
-        <div className="list-group">
+      <div className="container-fluid" style={{ marginLeft: "30px" }}>
+        <div className="list-group" style={{ width: "600px" }}>
           <a
             href="/pet-x"
             className="list-group-item list-group-item-action"
@@ -35,7 +35,6 @@ export default function ListaPet(props) {
           <a
             href="/pet-x"
             className="list-group-item list-group-item-action"
-            style={{ backgroundColor: tema }}
             data-pet-id="4"
             onClick={(e) => seletorView("DetalhesPet", e)}
           >

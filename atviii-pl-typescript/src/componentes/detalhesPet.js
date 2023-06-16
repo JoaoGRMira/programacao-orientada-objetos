@@ -3,19 +3,19 @@ export default function DetalhesPet(props) {
     let tema = props.tema
     const { cliente ,nome, tipo, raca, genero } = this.props;
     return (
-        <div>
-        <h1>Detalhes do Pet</h1>
-        <p>Tutor: {cliente}</p>
-        <p>Nome: {nome}</p>
-        <p>Tipo: {tipo}</p>
-        <p>Raça: {raca}</p>
-        <p>Gênero: {genero}</p>
-        <div className="input-group mb-3">
-          <button className="btn btn-outline-secondary" type="button" style={{background: "#AB8262", color: "#faf6f6"}}>Editar</button>
-        </div>
-        <div className="input-group mb-3">
-          <button className="btn btn-outline-secondary" type="button" style={{background: "#AB8262", color: "#faf6f6"}}>Excluir</button>
-        </div>
+      <div style={{ marginLeft: "40px", marginTop: "30px"}}>
+        <p><b>Tutor:</b> {cliente}</p>
+        <p><b>Nome:</b> {nome}</p>
+        <p><b>Tipo:</b> {tipo}</p>
+        <p><b>Raça:</b> {raca}</p>
+        <p><b>Gênero:</b> {genero}</p>
+        
+        <button type="button" className="btn btn-success" style={{ width: "100px", marginRight: "20px"}}>
+          Editar
+        </button>
+        <button type="button" className="btn btn-danger" style={{ width: "100px", left:"10px" }}>
+          Excluir
+        </button>
       </div>
     );
 }

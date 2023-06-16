@@ -31,7 +31,10 @@ export default function Roteador() {
         if (tela === 'Clientes') {
             return (
                 <>
-                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Listagem de Clientes
+                    </h2>
                     <ListaCliente tema="#e3f2fd" />
                 </>
             )
@@ -39,14 +42,22 @@ export default function Roteador() {
         if (tela === 'Cadastros') {
         return (
             <>
-                <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
-                <h1>Cadastrar um cliente</h1>
+                <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                <h2 style={{ marginLeft: "40px" }}>
+                    Cadastrar um cliente
+                </h2>
                 <FormularioCadastroCliente tema="#e3f2fd" />
-                <h1>Cadastrar um pet</h1>
+                <h2 style={{ marginLeft: "40px" }}>
+                    Cadastrar um Pet
+                </h2>
                 <FormularioCadastroPet tema="#e3f2fd" />
-                <h1>Cadastrar um produto</h1>
+                <h2 style={{ marginLeft: "40px" }}>
+                    Cadastrar um produto
+                </h2>
                 <FormularioCadastroProduto tema="#e3f2fd" />
-                <h1>Cadastrar um serviço</h1>
+                <h2 style={{ marginLeft: "40px" }}>
+                    Cadastrar um serviço
+                </h2>
                 <FormularioCadastroServico tema="#e3f2fd" />
             </>
         )
@@ -54,7 +65,10 @@ export default function Roteador() {
         if (tela === 'Pets') {
             return (
                 <>
-                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Listagem de Pets
+                    </h2>
                     <ListaPet tema="#e3f2fd" />
                 </>
             )
@@ -62,7 +76,10 @@ export default function Roteador() {
         if (tela === 'Produtos') {
             return (
                 <>
-                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Listagem de Produtos
+                    </h2>
                     <ListaProduto tema="#e3f2fd" />
                 </>
             )
@@ -70,18 +87,25 @@ export default function Roteador() {
         if (tela === 'Serviços') {
             return (
                 <>
-                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Listagem de Serviços
+                    </h2>
                     <ListaServico tema="#e3f2fd" />
                 </>
             )
         }
-        if (tela === 'Solicitar produto/serviço') {
+        if (tela === 'Consumir') {
             return (
                 <>
-                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
-                    <h1>Solicitar um produto</h1>
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Consumir um produto
+                    </h2>
                     <FormularioConsumoProduto tema="#e3f2fd" />
-                    <h1>Solicitar um serviço</h1>
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Consumir um serviço
+                    </h2>
                     <FormularioConsumoServico tema="#e3f2fd" />
                 </>
             )
@@ -89,14 +113,22 @@ export default function Roteador() {
         if (tela === 'Consumos') {
             return (
                 <>
-                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
-                    <h1>Lista dos 10 clientes que mais consumiram produtos/serviços, em quantidade</h1>
+                    <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Lista dos 10 clientes que mais consumiram em quantidade
+                    </h2>
                     <ListaClientesMaisConsumiramQuantidade tema="#e3f2fd" />
-                    <h1>Lista geral dos serviços/produtos mais consumidos</h1>
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Lista geral dos serviços/produtos mais consumidos
+                    </h2>
                     <ListaGeralMaisConsumidos tema="#e3f2fd" />
-                    <h1>Lista dos serviços/produtos mais consumidos por tipo e raça de pets</h1>
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Lista dos serviços/produtos mais consumidos por tipo e raça de pets
+                    </h2>
                     <ListaServProdMaisConsumidosTipoRaca tema="#e3f2fd" />
-                    <h1>Lista dos 5 clientes que mais consumiram em valor</h1>
+                    <h2 style={{ marginLeft: "40px" }}>
+                        Lista dos 5 clientes que mais consumiram em valor
+                    </h2>
                     <ListaClientesMaisConsumiramValor tema="#e3f2fd" />
                 </>
             )
@@ -113,7 +145,10 @@ export default function Roteador() {
         
               return (
                 <>
-                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <h2 style={{ marginLeft: "40px" }}>
+                    Detalhes do Cliente
+                  </h2>
                   <DetalhesCliente {...detalhesCliente} />
                 </>
             )
@@ -129,7 +164,10 @@ export default function Roteador() {
         
               return (
                 <>
-                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <h2 style={{ marginLeft: "40px" }}>
+                    Detalhes do Pet
+                  </h2>
                   <DetalhesPet {...detalhesPet} />
                 </>
             )
@@ -142,7 +180,10 @@ export default function Roteador() {
         
               return (
                 <>
-                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <h2 style={{ marginLeft: "40px" }}>
+                    Detalhes do Produto
+                  </h2>
                   <DetalhesProduto {...detalhesProduto} />
                 </>
             )
@@ -154,7 +195,10 @@ export default function Roteador() {
         
               return (
                 <>
-                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Solicitar produto/serviço', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <BarraNavegacao seletorView={selecionarView} tema="#e3f2fd" botoes={['Cadastros', 'Consumir', 'Clientes', 'Pets', 'Produtos', 'Serviços', 'Consumos']} />
+                  <h2 style={{ marginLeft: "40px" }}>
+                    Detalhes do Serviço
+                  </h2>
                   <DetalhesServico {...detalhesServico} />
                 </>
             )
