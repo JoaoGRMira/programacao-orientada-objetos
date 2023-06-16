@@ -9,8 +9,8 @@ export default class ListaClientesMaisConsumiramValor extends Component<props>{
     render() {
         let tema = this.props.tema
         return (
-            <div className="container-fluid">
-                <div className="list-group">
+            <div className="container-fluid" style={{ marginLeft: "30px", marginBottom: "30px"}}>
+                <div className="list-group" style={{ width: "600px" }}>
                     <a
                         href="/consumo-x"
                         className="list-group-item list-group-item-action"

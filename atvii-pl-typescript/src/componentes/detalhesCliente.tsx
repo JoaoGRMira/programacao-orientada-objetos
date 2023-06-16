@@ -13,20 +13,20 @@ export default class DetalhesCliente extends Component<Props> {
   render() {
     const { nome, nomeSocial, cpf, rg, produtosConsumidos, servicosConsumidos } = this.props;
     return (
-      <div>
-        <h1>Detalhes do Cliente</h1>
-        <p>Nome: {nome}</p>
-        <p>Nome Social: {nomeSocial}</p>
-        <p>CPF: {cpf}</p>
-        <p>RG: {rg}</p>
-        <p>Produtos consumidos: {produtosConsumidos}</p>
-        <p>Serviços consumidos: {servicosConsumidos}</p>
-        <div className="input-group mb-3">
-          <button className="btn btn-outline-secondary" type="button" style={{background: "#AB8262", color: "#faf6f6"}}>Editar</button>
-        </div>
-        <div className="input-group mb-3">
-          <button className="btn btn-outline-secondary" type="button" style={{background: "#AB8262", color: "#faf6f6"}}>Excluir</button>
-        </div>
+      <div style={{ marginLeft: "40px", marginTop: "30px"}}>
+        <p><b>Nome:</b> {nome}</p>
+        <p><b>Nome Social:</b> {nomeSocial}</p>
+        <p><b>CPF:</b> {cpf}</p>
+        <p><b>RG:</b> {rg}</p>
+        <p><b>Produtos consumidos:</b> {produtosConsumidos}</p>
+        <p><b>Serviços consumidos:</b> {servicosConsumidos}</p>
+        
+        <button type="button" className="btn btn-success" style={{ width: "100px", marginRight: "20px"}}>
+          Editar
+        </button>
+        <button type="button" className="btn btn-danger" style={{ width: "100px", left:"10px" }}>
+          Excluir
+        </button>
       </div>
     );
   }

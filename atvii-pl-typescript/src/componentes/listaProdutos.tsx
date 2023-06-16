@@ -10,8 +10,8 @@ export default class ListaProduto extends Component<props> {
     render() {
         const { tema, seletorView } = this.props;
         return (
-            <div className="container-fluid">
-                <div className="list-group">
+            <div className="container-fluid" style={{ marginLeft: "30px" }}>
+                <div className="list-group" style={{ width: "600px" }}>
                     <a
                         href="/produto-x"
                         className="list-group-item list-group-item-action"

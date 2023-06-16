@@ -10,8 +10,8 @@ export default class ListaCliente extends Component<Props> {
   render() {
     const { tema, seletorView } = this.props;
     return (
-      <div className="container-fluid">
-        <div className="list-group">
+      <div className="container-fluid" style={{ marginLeft: "30px" }}>
+        <div className="list-group" style={{ width: "600px" }}>
           <a
             href="/cliente-x"
             className="list-group-item list-group-item-action"
@@ -39,7 +39,6 @@ export default class ListaCliente extends Component<Props> {
           <a
             href="/cliente-x"
             className="list-group-item list-group-item-action"
-            style={{ backgroundColor: tema }}
             data-cliente-id="4"
             onClick={(e) => seletorView("DetalhesCliente", e)}
           >
