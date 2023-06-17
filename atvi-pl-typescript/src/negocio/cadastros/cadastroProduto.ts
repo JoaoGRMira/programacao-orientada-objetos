@@ -15,8 +15,8 @@ export default class CadastroProduto extends Cadastro {
         let nomeProduto = this.entrada.receberTexto('Por favor, informe o nome do produto: ');
         let valorProduto = this.entrada.receberNumero('Por favor, informe o valor do produto: ');
         let produto = new Produto(nomeProduto, valorProduto);
-        produto.nome = nomeProduto;
-        produto.valor = valorProduto;
+        produto.nomeProduto = nomeProduto;
+        produto.valorProduto = valorProduto;
         this.produtos.push(produto)
     }
     public gerarProntos(): void {

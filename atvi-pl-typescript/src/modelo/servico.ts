@@ -1,16 +1,14 @@
 export default class Servico {
-    public nome: string;
-    public valor: number;
-    nomeServico: any;
-    valorServico: any;
+    public nomeServico: string;
+    public valorServico: number;
     constructor(nome: string, valor: number){
-        this.nome = nome
-        this.valor = valor
+        this.nomeServico = nome
+        this.valorServico = valor
     }
     public get getNome(): string {
-        return this.nome
+        return this.nomeServico
     }
     public get getValor(): number {
-        return this.valor
+        return this.valorServico
     }
 }

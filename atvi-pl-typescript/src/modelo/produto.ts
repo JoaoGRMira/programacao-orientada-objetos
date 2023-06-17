@@ -1,16 +1,14 @@
 export default class Produto {
-    public nome: string;
-    public valor: number;
-    nomeProduto: string;
-    valorProduto: any;
+    public nomeProduto: string;
+    public valorProduto: number;
     constructor(nome: string, valor: number){
-        this.nome = nome
-        this.valor = valor
+        this.nomeProduto = nome
+        this.valorProduto = valor
     }
     public get getNome(): string {
-        return this.nome
+        return this.nomeProduto
     }
     public get getValor(): number {
-        return this.valor
+        return this.valorProduto
     }
 }

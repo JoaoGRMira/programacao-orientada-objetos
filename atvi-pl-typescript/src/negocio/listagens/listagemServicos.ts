@@ -11,8 +11,8 @@ export default class ListagemServicos extends Listagem {
         console.log(`\nLista de todos os serviços:`);
         
         this.servicos.forEach( servico => {
-            console.log(`Nome do serviço: ${servico.nome}`)
-            console.log(`Valor do serviço: ${servico.valor}`)
+            console.log(`Nome do serviço: ${servico.nomeServico}`)
+            console.log(`Valor do serviço: ${servico.valorServico}`)
         })
         
         //for (let i = 0; i < this.servicos.length; i++) {

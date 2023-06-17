@@ -4,6 +4,7 @@ import CadastroCliente from "../negocio/cadastros/cadastroCliente";
 import CadastroPet from "../negocio/cadastros/cadastroPet";
 import CadastroProduto from "../negocio/cadastros/cadastroProduto";
 import CadastroServico from "../negocio/cadastros/cadastroServico";
+import ClientesGerados from "../negocio/cadastros/clientesProntos";
 import ConsumirProduto from "../negocio/consumiveis/consumirProduto";
 import ConsumirServico from "../negocio/consumiveis/consumirServico";
 import EditorCliente from "../negocio/edicoes/editorCliente";
@@ -27,6 +28,12 @@ import SelecionadorServico from "../negocio/selecionadores/selecionadorServico";
 console.log(`Bem-vindo ao melhor sistema de gerenciamento de pet shops e clínicas veterinarias`)
 let empresa = new Empresa()
 let execucao = true
+let cadastroProduto = new CadastroProduto(empresa.getProdutos);
+let cadastroServico = new CadastroServico(empresa.getServicos);
+let gerarClientes = new ClientesGerados(empresa.getClientes, empresa.getProdutos, empresa.getServicos)
+cadastroServico.gerarProntos();
+cadastroProduto.gerarProntos();
+gerarClientes.gerarProntos();
 
 while (execucao) {
     console.log(`Opções:`);

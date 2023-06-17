@@ -35,7 +35,7 @@ export default class ConsumirServico extends Consumivel {
         let servico = selecionadorNome.selecionarServico(nomeServico)
         
         cliente.adicionarServico(servico)
-        pet.adicionarProduto(servico)
+        pet.adicionarServico(servico)
         console.log(`\nServico consumido pelo cliente ${cliente.nome}\n`);
     }
 }
