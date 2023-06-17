@@ -19,7 +19,37 @@ export default class CadastroServico extends Cadastro {
         servico.valor = valorServico;
 
         this.servicos.push(servico)
-
-        console.log(`\nCadastro concluído :)\n`);
+    }
+    public gerarProntos(): void {
+        let servicos = [
+            "Banho e tosa para cães de porte pequeno",
+            "Banho e tosa para cães de porte médio",
+            "Banho e tosa para cães de porte grande",
+            "Hospedagem para cães",
+            "Hospedagem para gatos",
+            "Passeio individual com cães",
+            "Adestramento básico para cães",
+            "Consulta veterinária",
+            "Pet sitter",
+            "Pet taxi"
+        ]
+        let valor = [
+            50.00,
+            70.0,
+            90.00,
+            60.00,
+            40.00,
+            30.00,
+            200.00,
+            100.00,
+            50.00,
+            40.00
+        ]
+        let sliceServico = servicos.slice();
+        let sliceServicoValor = valor.slice()
+        for (let index = 0; index < sliceServico.length; index++) {
+            let adicionarServico = new Servico(sliceServico[index], Number(sliceServicoValor[index]))
+            this.servicos.push(adicionarServico)
+        }
     }
 }
